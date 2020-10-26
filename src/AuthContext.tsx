@@ -86,7 +86,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
        */
       let user = await userManager.getUser();
       if (hasCodeInUrl(location)) {
-        if (user) {
+        if (user && !user.expired) {
           setUserData(user);
           onSignIn && onSignIn(user);
           return;
